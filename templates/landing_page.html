@@ -1,0 +1,24 @@
+{% extends 'site_base.html' %}
+
+
+
+{% block body %}
+
+    {% load bootstrap3 %}
+    <div style="width: 10%; margin: auto; margin-top: 3cm">
+        <h3> User: {{ user }}</h3>
+        <br/>
+        {% if user.is_anonymous %}
+            <a href="/login/one" class="btn btn-primary">
+                One factor login
+            </a>
+        {% else %}
+            <h1>
+                Authentication successful
+            </h1>
+            <a href="/login/logout" class="btn btn-primary">
+                Logout
+            </a>
+        {% endif %}
+    </div>
+{% endblock %}

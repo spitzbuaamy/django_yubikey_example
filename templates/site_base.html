@@ -1,0 +1,38 @@
+{% load staticfiles %}
+{% load static %}
+{# Load the tag library #}
+{% load bootstrap3 %}
+
+{# Load CSS and JavaScript #}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+
+{# Display django.contrib.messages as Bootstrap alerts #}
+{% bootstrap_messages %}
+
+<!DOCTYPE html>
+<html lang="de">
+<head>
+
+
+    <title>Yubikey Example</title>
+
+    {% block extra_head %}
+    {% endblock %}
+
+</head>
+
+
+<body>
+<div id="wrapper">
+
+    <div id="page-wrapper">
+        <div class="container-fluid">
+            {% block body %}
+
+            {% endblock %}
+        </div>
+    </div>
+</div>
+</body>
+</html>
