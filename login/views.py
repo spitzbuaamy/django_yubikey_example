@@ -2,7 +2,6 @@ from django.contrib.auth import REDIRECT_FIELD_NAME, login as auth_login, logout
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 
 # Create your views here.
-from django.urls import reverse
 from django.urls import reverse_lazy
 from django.utils.decorators import method_decorator
 from django.utils.http import is_safe_url

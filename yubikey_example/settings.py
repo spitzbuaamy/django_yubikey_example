@@ -1,3 +1,5 @@
+from django.core.urlresolvers import reverse_lazy
+
 """
 Django settings for yubikey_example project.
 
@@ -15,7 +17,6 @@ import os
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.10/howto/deployment/checklist/
 
@@ -26,7 +27,6 @@ SECRET_KEY = ')6v*70&d95qydgi-q9&$8k%*(78n=i82q-1do9=2d(n3f9t(u%'
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
 
 # Application definition
 
@@ -39,6 +39,12 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'bootstrap3',
     'login',
+    'django_otp',
+    'django_otp.plugins.otp_totp',
+    'django_otp.plugins.otp_hotp',
+    'django_otp.plugins.otp_static',
+    'two_factor',
+    'otp_yubikey',
 ]
 
 MIDDLEWARE = [
@@ -47,8 +53,10 @@ MIDDLEWARE = [
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django_otp.middleware.OTPMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
 ]
 
 ROOT_URLCONF = 'yubikey_example.urls'
@@ -72,7 +80,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'yubikey_example.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
 
@@ -82,7 +89,6 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/1.10/ref/settings/#auth-password-validators
@@ -102,7 +108,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/1.10/topics/i18n/
 
@@ -116,8 +121,10 @@ USE_L10N = True
 
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
 STATIC_URL = '/static/'
+
+LOGIN_URL = 'two_factor:login'
+LOGIN_REDIRECT_URL = 'two_factor:profile'
