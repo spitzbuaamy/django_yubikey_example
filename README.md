@@ -8,6 +8,6 @@ git clone https://github.com/spitzbuaamy/django_yubikey_example.git
 
 cd django_yubikey_example
 
-sudo pip install -r requirements.txt
+sudo pip3 install -r requirements.txt
 
 python3 manage.py runserver 0.0.0.0:80
