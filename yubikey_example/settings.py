@@ -128,3 +128,4 @@ STATIC_URL = '/static/'
 
 LOGIN_URL = 'two_factor:login'
 LOGIN_REDIRECT_URL = 'two_factor:profile'
+ALLOWED_HOSTS = ['*']
